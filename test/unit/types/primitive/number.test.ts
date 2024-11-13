@@ -13,7 +13,7 @@ describe('number', () => {
         expect(typeof num).toBe('number');
     });
 
-    test('decimal number', () => {
+    test('decimal (float) number', () => {
         const num: number = 0.1;
         expect(num).toBe(0.1);
         expect(typeof num).toBe('number');
