@@ -48,3 +48,53 @@ This document provides a quick comparison of TypeScript’s special types—`nul
 | **`unknown`** | **Type-check before usage** | A safer alternative to `any` for values of uncertain type; requires type-checking before usage.                       | Used when the type is unknown at the time, such as user input or API responses.                         | Requires type narrowing or assertions before use. |
 
 This comparison provides a quick reference for understanding when to use each type, helping to write TypeScript code that is both type-safe and expressive.
+
+
+# Choosing Between Types and Interfaces in TypeScript
+
+In TypeScript, both **types** and **interfaces** allow you to define the shape of an object or data structure. While they have similarities, each has unique features and use cases. This guide helps clarify when to use a **type** and when to use an **interface**.
+
+## Quick Reference
+
+| **Feature**           | **Type**                                                                                   | **Interface**                                                                               |
+|-----------------------|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **Basic Use**         | Use for defining aliases for primitive, union, intersection, or complex types.             | Use for defining the shape of objects or classes with properties and method signatures.     |
+| **Extensibility**     | Cannot be extended after creation, but can be intersected with other types.                | Easily extendable with additional properties or by merging with other interfaces.           |
+| **Object Structure**  | Best for creating aliases for complex types (e.g., unions, intersections, or tuples).      | Best for defining the structure of an object or class with known properties and methods.    |
+| **Compatibility**     | Works well with primitives, complex types, and function signatures.                        | Preferred for defining data models and classes.                                             |
+| **Declaration Merging** | Not supported.                                                                            | Supported—interfaces can merge with other interfaces with the same name.                    |
+
+## When to Use Types
+
+- **Complex Data Structures**: Use types for unions, intersections, and mapped types, as well as defining arrays and tuples.
+  ```typescript
+  type Response = { success: boolean } | { error: string };
+  ```
+
+- **Primitive Type Aliases**: Use types to create more readable aliases for primitive types.
+  ```typescript
+  type ID = string | number;
+  ```
+- **Function Signatures**: Types are flexible for defining function signatures or callback types.
+  ```typescript
+  type Callback = (data: string) => void;
+  ```
+
+## When to Use Interfaces
+- **Object and Class Shapes**: Use interfaces to define the structure of an object or class with known properties and methods.
+  ```typescript
+  interface User {
+      name: string;
+      age: number;
+      greet(): string;
+  }
+  ```
+- **Extending and Merging**: Use interfaces when you need to extend or merge types, as they support inheritance and declaration merging.
+
+  ```typescript
+    interface Animal { species: string; }
+    interface Dog extends Animal { bark(): void; }
+  ```
+**Summary**
+Use type when working with complex types, unions, intersections, or when creating aliases for primitive types.
+Use interface when defining the shape of an object or class, or when you need to extend or merge types.
