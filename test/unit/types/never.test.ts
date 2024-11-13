@@ -1,3 +1,16 @@
+// The `never` type in TypeScript represents values that should never occur. 
+// It is typically used in scenarios where a function never successfully completes, such as functions that 
+// always throw an error or those that contain infinite loops. The `never` type is also useful for 
+// ensuring exhaustive checks in switch statements and conditionals, allowing TypeScript to enforce that all 
+// possible cases have been handled.
+//
+// Examples of when to use `never`:
+// - In functions that always throw an exception or have infinite loops.
+// - In switch statements or conditional branches to catch unhandled cases (exhaustive checks).
+// - For scenarios where the type is logically impossible, signaling to TypeScript that certain code should
+//   never be reachable.
+
+
 describe('never type', () => {
     
     test('function that throws an error', () => {
